@@ -5,8 +5,12 @@ using UnityEngine.SceneManagement;
 
 public class RestartLevelOnCollision : MonoBehaviour
 {
+    [SerializeField]
+    string strPlayerTag;
+
     private void OnCollisionEnter(Collision collision)
     {
-        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+        if (collision.collider.tag == strPlayerTag)
+            SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 }
